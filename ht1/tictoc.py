@@ -23,10 +23,7 @@ class TicTacGame:
         if (y != int(y)) or (y < 1) or (y > 3):
             return False
 
-        if self.board[x - 1][y - 1] == 0:
-            return True
-        else:
-            return False
+        return self.board[x - 1][y - 1] == 0
 
     def set_pos(self, x, y):
 
@@ -125,11 +122,10 @@ class TicTacGame:
 
         if res:
             return 1  # есть победитель
+        elif self.free_pos_cnt > 0:
+            return -1  # игра продолжается
         else:
-            if self.free_pos_cnt > 0:
-                return -1  # игра продолжается
-            else:
-                return 0  # ничья
+            return 0  # ничья
 
 
 if __name__ == "__main__":
